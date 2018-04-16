@@ -25,8 +25,6 @@ import com.alibaba.idst.nls.internal.protocol.NlsRequestASR;
  * Created by xiexueliang on 2018/3/22.
  */
 
-/**
- * github上传测试注释*/
 public class SpeechRecognitionActivity extends Activity {
     private Button startbutton;
     private Button stopbutton;
