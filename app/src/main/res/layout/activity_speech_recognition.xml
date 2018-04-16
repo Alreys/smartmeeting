@@ -1,49 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
     android:orientation="vertical"
+    android:background="@mipmap/yuyinshibeibeijin"
     tools:context="com.example.xiexueliang.zhihui.a120.SpeechRecognitionActivity">
 
+    <ImageButton
+        android:id="@+id/start"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/table"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/luyin" />
+
+    <ImageButton
+        android:id="@+id/table"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/liebiao" />
+
+    <ImageButton
+        android:id="@+id/clean"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/table"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/qingkong" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/fanhui" />
+
+    <ImageButton
+        android:id="@+id/change"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/back"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/qiehuan" />
 
     <EditText
         android:id="@+id/requesttext"
         android:layout_width="match_parent"
-        android:layout_height="463dp"
-        android:ellipsize="none"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/start"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/back"
         android:gravity="center"
-        android:hint="识别结果"
-        android:scrollHorizontally="true" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/startbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="开始 识别" />
-
-            <Button
-                android:id="@+id/stopbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="结束 识别" />
-
-            <Button
-                android:id="@+id/textsave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="保存" />
-        </LinearLayout>
-
-</LinearLayout>
+        android:inputType="textPersonName"
+        android:text="Name" />
+</RelativeLayout>

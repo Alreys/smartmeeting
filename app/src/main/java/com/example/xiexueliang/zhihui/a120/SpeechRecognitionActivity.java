@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
@@ -26,7 +27,7 @@ import com.alibaba.idst.nls.internal.protocol.NlsRequestASR;
  */
 
 public class SpeechRecognitionActivity extends Activity {
-    private Button startbutton;
+    private ImageButton startbutton;
     private Button stopbutton;
     private Button textsave;
     private TextView resqulttext;
@@ -37,7 +38,10 @@ public class SpeechRecognitionActivity extends Activity {
     private String secret;
     private String appKey;
     private boolean isRecognizing = false;
-    JSONObject jsonObject2;        TCPClient tcpClient = new TCPClient();
+    JSONObject jsonObject2;
+    TCPClient tcpClient = new TCPClient();
+    Boolean panduan = false;
+
 
 
 
@@ -46,10 +50,8 @@ public class SpeechRecognitionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speech_recognition);
         context = getApplicationContext();
-        startbutton = findViewById(R.id.startbutton);
-        stopbutton = findViewById(R.id.stopbutton);
+        startbutton = findViewById(R.id.start);
         resqulttext = findViewById(R.id.requesttext);
-        textsave = findViewById(R.id.textsave);
         mNlsRequest = new NlsRequest();
         appKey = "nls-service"; //参考文档
         id = "LTAIqQyS2iIGjNIg";
@@ -66,13 +68,13 @@ public class SpeechRecognitionActivity extends Activity {
         mNlsClient.setRecordAutoStop(false);  //设置VAD
         mNlsClient.setMinVoiceValueInterval(100); //设置音量回调时长
         initStartRecognizing();
-        initStopRecognizing();
-        textsave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inputdialog();
-            }
-        });
+//        initStopRecognizing();
+//        textsave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                inputdialog();
+//            }
+//        });
     }
     private NlsListener mRecognizeListener = new NlsListener(){
         @Override
@@ -107,31 +109,40 @@ public class SpeechRecognitionActivity extends Activity {
 
 
     private void initStartRecognizing(){
-        startbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isRecognizing = true;
-                mNlsRequest.authorize(id,secret);
-                mNlsClient.start();
-                resqulttext.setEnabled(false);
-                startbutton.setText("录音中...");
-            }
-        });
+            startbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (panduan == false) {
+                        panduan = true;
+                        isRecognizing = true;
+                        mNlsRequest.authorize(id, secret);
+                        mNlsClient.start();
+                        resqulttext.setEnabled(false);
+                        startbutton.setImageDrawable(getResources().getDrawable(R.mipmap.yinping));
+                    }else {
+                        panduan = false;
+                        isRecognizing = false;
+                        mNlsClient.stop();
+                        resqulttext.setEnabled(true);
+                        startbutton.setImageDrawable(getResources().getDrawable(R.mipmap.luyin));
+                    }
+                }
+            });
 
     }
 
     private void initStopRecognizing(){
-        stopbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isRecognizing = false;
-                mNlsClient.stop();
-                resqulttext.setEnabled(true);
-//                tcpClient.setString(resqulttext.getText().toString());
-//                tcpClient.sss();
-                startbutton.setText("开始 录音");
-            }
-        });
+//        stopbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                isRecognizing = false;
+//                mNlsClient.stop();
+//                resqulttext.setEnabled(true);
+////                tcpClient.setString(resqulttext.getText().toString());
+////                tcpClient.sss();
+//                startbutton.setImageDrawable(getResources().getDrawable(R.mipmap.luyin));
+//            }
+//        });
     }
 
     private StageListener mStageListener = new StageListener() {

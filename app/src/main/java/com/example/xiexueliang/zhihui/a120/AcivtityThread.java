@@ -9,6 +9,6 @@ import com.alibaba.fastjson.JSONObject;
  */
 
 public class AcivtityThread extends Thread {
-    private JSONObject jsonObject1;
+
 
 }
