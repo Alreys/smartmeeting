@@ -22,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SpeechRecognitionActivity">
+        <activity android:name=".LogoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,7 +30,7 @@
         </activity>
         <activity android:name=".PersonCenterActivity" />
         <activity android:name=".MyDocumentActivity" />
-        <activity android:name=".LogoActivity" />
+        <activity android:name=".SpeechRecognitionActivity" />
         <activity android:name=".SpeechSynthesisActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />

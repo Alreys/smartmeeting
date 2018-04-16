@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,8 +29,9 @@ import com.alibaba.idst.nls.internal.protocol.NlsRequestASR;
 
 public class SpeechRecognitionActivity extends Activity {
     private ImageButton startbutton;
-    private Button stopbutton;
-    private Button textsave;
+//    private Button stopbutton;
+//    private Button textsave;
+    private ImageButton clean,table,change;
     private TextView resqulttext;
     private Context context;
     private NlsClient mNlsClient;
@@ -38,13 +40,9 @@ public class SpeechRecognitionActivity extends Activity {
     private String secret;
     private String appKey;
     private boolean isRecognizing = false;
-    JSONObject jsonObject2;
-    TCPClient tcpClient = new TCPClient();
-    Boolean panduan = false;
-
-
-
-
+    private JSONObject jsonObject2;
+    private TCPClient tcpClient = new TCPClient();
+    private Boolean panduan = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +50,10 @@ public class SpeechRecognitionActivity extends Activity {
         context = getApplicationContext();
         startbutton = findViewById(R.id.start);
         resqulttext = findViewById(R.id.requesttext);
+        clean = findViewById(R.id.clean);
+        table = findViewById(R.id.table);
+        change = findViewById(R.id.change);
+
         mNlsRequest = new NlsRequest();
         appKey = "nls-service"; //参考文档
         id = "LTAIqQyS2iIGjNIg";
@@ -75,6 +77,8 @@ public class SpeechRecognitionActivity extends Activity {
 //                inputdialog();
 //            }
 //        });
+
+        resqulttext.setMovementMethod(ScrollingMovementMethod.getInstance());//设置textview文字上下滚动
     }
     private NlsListener mRecognizeListener = new NlsListener(){
         @Override
@@ -117,21 +121,40 @@ public class SpeechRecognitionActivity extends Activity {
                         isRecognizing = true;
                         mNlsRequest.authorize(id, secret);
                         mNlsClient.start();
-                        resqulttext.setEnabled(false);
                         startbutton.setImageDrawable(getResources().getDrawable(R.mipmap.yinping));
                     }else {
                         panduan = false;
                         isRecognizing = false;
                         mNlsClient.stop();
-                        resqulttext.setEnabled(true);
                         startbutton.setImageDrawable(getResources().getDrawable(R.mipmap.luyin));
                     }
+                }
+            });
+            clean.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    resqulttext.setText("");
+                }
+            });
+            table.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(SpeechRecognitionActivity.this,MyDocumentActivity.class);
+                    startActivity(intent);
+                }
+            });
+            change.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(SpeechRecognitionActivity.this,SpeechSynthesisActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             });
 
     }
 
-    private void initStopRecognizing(){
+//    private void initStopRecognizing(){
 //        stopbutton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -143,7 +166,7 @@ public class SpeechRecognitionActivity extends Activity {
 //                startbutton.setImageDrawable(getResources().getDrawable(R.mipmap.luyin));
 //            }
 //        });
-    }
+ //   }
 
     private StageListener mStageListener = new StageListener() {
         @Override

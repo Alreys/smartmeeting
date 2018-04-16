@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context="com.example.xiexueliang.zhihui.a120.SpeechSynthesisActivity">
 
+    <Button
+        android:id="@+id/qiehuan1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="切换"/>
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"

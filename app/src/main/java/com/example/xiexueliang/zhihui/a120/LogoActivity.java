@@ -22,7 +22,7 @@ public class LogoActivity extends AppCompatActivity {
     private void enterHome(){
         Timer time = new Timer();
         TimerTask tk = new TimerTask() {
-            Intent intent = new Intent(LogoActivity.this,LoginActivity.class);
+            Intent intent = new Intent(LogoActivity.this,SpeechRecognitionActivity.class);
             @Override
             public void run() {
                 // TODO Auto-generated method stub
@@ -31,7 +31,7 @@ public class LogoActivity extends AppCompatActivity {
                 finish();
             }
         };
-        time.schedule(tk, 2000);
+        time.schedule(tk, 1500);
 
     }
 }

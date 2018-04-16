@@ -4,6 +4,7 @@ package com.example.xiexueliang.zhihui.a120;
 */
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.alibaba.idst.nls.NlsClient;
@@ -28,6 +30,7 @@ public class SpeechSynthesisActivity extends Activity {
     private NlsClient mNlsClient;
     private NlsRequest mNlsRequest;
     private Context context;
+    private Button qiehuan;
     int iMinBufSize = AudioTrack.getMinBufferSize(16000,
             AudioFormat.CHANNEL_CONFIGURATION_MONO,
             AudioFormat.ENCODING_PCM_16BIT);
@@ -42,6 +45,15 @@ public class SpeechSynthesisActivity extends Activity {
         context = getApplicationContext();
         setContentView(R.layout.activity_speech_synthesis);
 
+//        qiehuan.findViewById(R.id.qiehuan1);
+//        qiehuan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(SpeechSynthesisActivity.this,SpeechRecognitionActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
         UserContent = (TextView) findViewById(R.id.editText);
         Send_User_Content = (Button) findViewById(R.id.Ttsstart);
         context = getApplicationContext();
