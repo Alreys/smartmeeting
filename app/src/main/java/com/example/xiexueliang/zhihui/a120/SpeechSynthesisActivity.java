@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,12 +26,12 @@ import com.alibaba.idst.nls.internal.protocol.NlsRequestProto;
 
 public class SpeechSynthesisActivity extends Activity {
     private static final String TAG = "SpeechSynthesisActivity";
-    private TextView UserContent;
-    private Button Send_User_Content;
+    private EditText UserContent;
+    private ImageButton Send_User_Content;
     private NlsClient mNlsClient;
     private NlsRequest mNlsRequest;
     private Context context;
-    private Button qiehuan;
+    private ImageButton change,table,clean;
     int iMinBufSize = AudioTrack.getMinBufferSize(16000,
             AudioFormat.CHANNEL_CONFIGURATION_MONO,
             AudioFormat.ENCODING_PCM_16BIT);
@@ -44,18 +45,32 @@ public class SpeechSynthesisActivity extends Activity {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         setContentView(R.layout.activity_speech_synthesis);
+        UserContent = (EditText) findViewById(R.id.editText);
+        Send_User_Content = (ImageButton) findViewById(R.id.Ttsstart);
+        change = (ImageButton) findViewById(R.id.qiehuan);
+        table = (ImageButton) findViewById(R.id.table);
+        clean = (ImageButton)findViewById(R.id.clean);
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SpeechSynthesisActivity.this,SpeechRecognitionActivity.class);
+                startActivity(intent);
+            }
+        });
+        clean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserContent.setText("");
+            }
+        });
+        table.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SpeechSynthesisActivity.this,MyDocumentActivity.class);
+                startActivity(intent);
+            }
+        });
 
-//        qiehuan.findViewById(R.id.qiehuan1);
-//        qiehuan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(SpeechSynthesisActivity.this,SpeechRecognitionActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-        UserContent = (TextView) findViewById(R.id.editText);
-        Send_User_Content = (Button) findViewById(R.id.Ttsstart);
         context = getApplicationContext();
         mNlsRequest = initNlsRequest();
         String appkey = "nls-service";     //请设置简介页面的Appkey
@@ -65,7 +80,6 @@ public class SpeechSynthesisActivity extends Activity {
         NlsClient.configure(getApplicationContext()); //全局配置
         mNlsClient = NlsClient.newInstance(context, mRecognizeListener, null ,mNlsRequest);                          //实例化NlsClient
         initTtsContentButton();
-
 
     }
     private NlsRequest initNlsRequest(){

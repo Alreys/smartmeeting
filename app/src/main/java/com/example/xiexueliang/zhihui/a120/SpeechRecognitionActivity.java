@@ -148,7 +148,6 @@ public class SpeechRecognitionActivity extends Activity {
                 public void onClick(View v) {
                     Intent intent = new Intent(SpeechRecognitionActivity.this,SpeechSynthesisActivity.class);
                     startActivity(intent);
-                    finish();
                 }
             });
 

@@ -1,34 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/yuyinshibeibeijin"
     tools:context="com.example.xiexueliang.zhihui.a120.SpeechSynthesisActivity">
 
-    <Button
-        android:id="@+id/qiehuan1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="切换"/>
+    <ImageButton
+        android:id="@+id/Ttsstart"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/table"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/luyin" />
+
+    <ImageButton
+        android:id="@+id/table"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/liebiao" />
+
+    <ImageButton
+        android:id="@+id/clean"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/table"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/qingkong" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/requesttext"
+        android:layout_alignLeft="@+id/clean"
+        android:layout_alignStart="@+id/clean"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/fanhui" />
+
+    <ImageButton
+        android:id="@+id/qiehuan"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/table"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/table"
+        android:layout_marginTop="11dp"
+        android:background="#00000000"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/qiehuan" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
-
-    <Button
-        android:id="@+id/Ttsstart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="开始" />
-    <Button
-        android:id="@+id/voicesave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="录音保存"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Ttsstart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/qiehuan"
+        android:gravity="center"
+        android:scrollbars="vertical"
+        android:text="请输入要识别的文本"
+        android:textColor="#f9f7f7"
+        android:textSize="40px" />
+</RelativeLayout>

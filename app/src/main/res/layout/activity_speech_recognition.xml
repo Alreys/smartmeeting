@@ -50,9 +50,9 @@
         android:id="@+id/back"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/requesttext"
+        android:layout_alignLeft="@+id/clean"
+        android:layout_alignStart="@+id/clean"
         android:background="#00000000"
         android:scaleType="fitCenter"
         android:src="@mipmap/fanhui" />
@@ -61,9 +61,10 @@
         android:id="@+id/change"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignBottom="@+id/back"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/table"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/table"
+        android:layout_marginTop="11dp"
         android:background="#00000000"
         android:scaleType="fitCenter"
         android:src="@mipmap/qiehuan" />
@@ -75,9 +76,10 @@
         android:layout_above="@+id/start"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/back"
+        android:layout_below="@+id/change"
         android:gravity="center"
-        android:textSize="40px"
         android:scrollbars="vertical"
-        android:text="语音识别"/>
+        android:text="语音识别"
+        android:textColor="#f9f7f7"
+        android:textSize="40px" />
 </RelativeLayout>
