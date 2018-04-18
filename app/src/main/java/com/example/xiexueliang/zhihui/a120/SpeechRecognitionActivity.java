@@ -87,6 +87,7 @@ public class SpeechRecognitionActivity extends Activity {
                 case NlsClient.ErrorCode.SUCCESS:
                     if (result != null) {
                         jsonObject2 = JSON.parseObject(JSON.parseObject(result.results).get("asr_out").toString());
+                        Log.d("debug001",jsonObject2.toString());
                         if (mNlsClient.isStarted()==false)
                         {
                             tcpClient.setString(resqulttext.getText().toString());
